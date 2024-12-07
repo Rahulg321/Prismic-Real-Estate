@@ -1,5 +1,6 @@
 "use client";
 
+import { OutlineButton } from "@/components/Buttons/outline-button";
 import { Button } from "@/components/ui/button";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
@@ -18,7 +19,7 @@ const Hero = ({ slice }: HeroProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative overflow-hidden bg-slate-900 min-h-[75vh] max-h-[80vh]"
+      className="relative overflow-hidden bg-slate-900 min-h-screen"
     >
       <video
         src={"/background-video.mp4"}
@@ -28,11 +29,13 @@ const Hero = ({ slice }: HeroProps) => {
         muted
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-white px-12 text-pretty text-center">
-        <span className="mb-2 text-2xl lg:text-4xl">
-          {slice.primary.heading}
-        </span>
-        <span>{slice.primary.tagline}</span>
-        <Button>Click</Button>
+        <div className="mb-4 md:mb-6 lg:mb-8">
+          <h1>{slice.primary.heading}</h1>
+          <span>{slice.primary.tagline}</span>
+        </div>
+        <OutlineButton className="text-white border-white">
+          View All Properties
+        </OutlineButton>
       </div>
     </section>
   );

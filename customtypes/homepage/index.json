@@ -11,6 +11,24 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "blog_index": {
+              "type": "SharedSlice"
+            },
+            "product_info": {
+              "type": "SharedSlice"
+            },
+            "connect": {
+              "type": "SharedSlice"
+            },
+            "follow_us": {
+              "type": "SharedSlice"
+            },
+            "properties": {
+              "type": "SharedSlice"
+            },
+            "partners": {
+              "type": "SharedSlice"
+            },
             "highlight": {
               "type": "SharedSlice"
             },

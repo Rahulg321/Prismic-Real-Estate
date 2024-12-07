@@ -4,7 +4,122 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type BlogPostDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Blog Post documents
+ */
+interface BlogPostDocumentData {
+  /**
+   * Title field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Date Published field in *Blog Post*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.date_published
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date_published: prismic.DateField;
+
+  /**
+   * Featured Image field in *Blog Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.featured_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_image: prismic.ImageField<never>;
+
+  /**
+   * Main_Content field in *Blog Post*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.main_content
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  main_content: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Blog Post*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BlogPostDocumentDataSlicesSlice> /**
+   * Meta Title field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blog_post.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blog_post.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Blog Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Blog Post document from Prismic
+ *
+ * - **API ID**: `blog_post`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogPostDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<BlogPostDocumentData>,
+    "blog_post",
+    Lang
+  >;
+
 type HomepageDocumentDataSlicesSlice =
+  | BlogIndexSlice
+  | ProductInfoSlice
+  | ConnectSlice
+  | FollowUsSlice
+  | PropertiesSlice
+  | PartnersSlice
   | HighlightSlice
   | TestimonialsSlice
   | HeroSlice;
@@ -133,7 +248,175 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = HomepageDocument | PageDocument;
+export type AllDocumentTypes =
+  | BlogPostDocument
+  | HomepageDocument
+  | PageDocument;
+
+/**
+ * Primary content in *BlogIndex → Default → Primary*
+ */
+export interface BlogIndexSliceDefaultPrimary {
+  /**
+   * Heading field in *BlogIndex → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_index.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *BlogIndex → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_index.default.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for BlogIndex Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogIndexSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BlogIndexSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BlogIndex*
+ */
+type BlogIndexSliceVariation = BlogIndexSliceDefault;
+
+/**
+ * BlogIndex Shared Slice
+ *
+ * - **API ID**: `blog_index`
+ * - **Description**: BlogIndex
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogIndexSlice = prismic.SharedSlice<
+  "blog_index",
+  BlogIndexSliceVariation
+>;
+
+/**
+ * Item in *Connect → Default → Primary → Images*
+ */
+export interface ConnectSliceDefaultPrimaryImagesItem {
+  /**
+   * Office Image field in *Connect → Default → Primary → Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: connect.default.primary.images[].office_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  office_image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Connect → Default → Primary*
+ */
+export interface ConnectSliceDefaultPrimary {
+  /**
+   * Heading field in *Connect → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: connect.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *Connect → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: connect.default.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * Images field in *Connect → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: connect.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<Simplify<ConnectSliceDefaultPrimaryImagesItem>>;
+}
+
+/**
+ * Default variation for Connect Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ConnectSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ConnectSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Connect*
+ */
+type ConnectSliceVariation = ConnectSliceDefault;
+
+/**
+ * Connect Shared Slice
+ *
+ * - **API ID**: `connect`
+ * - **Description**: Connect
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ConnectSlice = prismic.SharedSlice<
+  "connect",
+  ConnectSliceVariation
+>;
+
+/**
+ * Default variation for FollowUs Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FollowUsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *FollowUs*
+ */
+type FollowUsSliceVariation = FollowUsSliceDefault;
+
+/**
+ * FollowUs Shared Slice
+ *
+ * - **API ID**: `follow_us`
+ * - **Description**: FollowUs
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FollowUsSlice = prismic.SharedSlice<
+  "follow_us",
+  FollowUsSliceVariation
+>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -246,9 +529,69 @@ export type HighlightSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Highlight → Background with Heading → Primary*
+ */
+export interface HighlightSliceBackgroundWithHeadingPrimary {
+  /**
+   * Featured Image field in *Highlight → Background with Heading → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: highlight.backgroundWithHeading.primary.featured_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *Highlight → Background with Heading → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: highlight.backgroundWithHeading.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *Highlight → Background with Heading → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: highlight.backgroundWithHeading.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * Content field in *Highlight → Background with Heading → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: highlight.backgroundWithHeading.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Background with Heading variation for Highlight Slice
+ *
+ * - **API ID**: `backgroundWithHeading`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightSliceBackgroundWithHeading = prismic.SharedSliceVariation<
+  "backgroundWithHeading",
+  Simplify<HighlightSliceBackgroundWithHeadingPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Highlight*
  */
-type HighlightSliceVariation = HighlightSliceDefault;
+type HighlightSliceVariation =
+  | HighlightSliceDefault
+  | HighlightSliceBackgroundWithHeading;
 
 /**
  * Highlight Shared Slice
@@ -260,6 +603,208 @@ type HighlightSliceVariation = HighlightSliceDefault;
 export type HighlightSlice = prismic.SharedSlice<
   "highlight",
   HighlightSliceVariation
+>;
+
+/**
+ * Primary content in *Partners → Default → Primary*
+ */
+export interface PartnersSliceDefaultPrimary {
+  /**
+   * Heading field in *Partners → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Partners Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PartnersSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Partners*
+ */
+type PartnersSliceVariation = PartnersSliceDefault;
+
+/**
+ * Partners Shared Slice
+ *
+ * - **API ID**: `partners`
+ * - **Description**: Partners
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersSlice = prismic.SharedSlice<
+  "partners",
+  PartnersSliceVariation
+>;
+
+/**
+ * Primary content in *ProductInfo → Default → Primary*
+ */
+export interface ProductInfoSliceDefaultPrimary {
+  /**
+   * Product Image field in *ProductInfo → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_info.default.primary.product_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  product_image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *ProductInfo → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_info.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Price field in *ProductInfo → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_info.default.primary.price
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  price: prismic.NumberField;
+}
+
+/**
+ * Default variation for ProductInfo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductInfoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProductInfoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProductInfo*
+ */
+type ProductInfoSliceVariation = ProductInfoSliceDefault;
+
+/**
+ * ProductInfo Shared Slice
+ *
+ * - **API ID**: `product_info`
+ * - **Description**: ProductInfo
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductInfoSlice = prismic.SharedSlice<
+  "product_info",
+  ProductInfoSliceVariation
+>;
+
+/**
+ * Item in *Properties → Default → Primary → Property Cards*
+ */
+export interface PropertiesSliceDefaultPrimaryPropertyCardsItem {
+  /**
+   * Card Image field in *Properties → Default → Primary → Property Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: properties.default.primary.property_cards[].card_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  card_image: prismic.ImageField<never>;
+
+  /**
+   * Card Heading field in *Properties → Default → Primary → Property Cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: properties.default.primary.property_cards[].card_heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_heading: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Properties → Default → Primary*
+ */
+export interface PropertiesSliceDefaultPrimary {
+  /**
+   * Heading field in *Properties → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: properties.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *Properties → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: properties.default.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * Property Cards field in *Properties → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: properties.default.primary.property_cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  property_cards: prismic.GroupField<
+    Simplify<PropertiesSliceDefaultPrimaryPropertyCardsItem>
+  >;
+}
+
+/**
+ * Default variation for Properties Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PropertiesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PropertiesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Properties*
+ */
+type PropertiesSliceVariation = PropertiesSliceDefault;
+
+/**
+ * Properties Shared Slice
+ *
+ * - **API ID**: `properties`
+ * - **Description**: Properties
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PropertiesSlice = prismic.SharedSlice<
+  "properties",
+  PropertiesSliceVariation
 >;
 
 /**
@@ -375,6 +920,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      BlogPostDocument,
+      BlogPostDocumentData,
+      BlogPostDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
@@ -382,14 +930,41 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      BlogIndexSlice,
+      BlogIndexSliceDefaultPrimary,
+      BlogIndexSliceVariation,
+      BlogIndexSliceDefault,
+      ConnectSlice,
+      ConnectSliceDefaultPrimaryImagesItem,
+      ConnectSliceDefaultPrimary,
+      ConnectSliceVariation,
+      ConnectSliceDefault,
+      FollowUsSlice,
+      FollowUsSliceVariation,
+      FollowUsSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
       HighlightSlice,
       HighlightSliceDefaultPrimary,
+      HighlightSliceBackgroundWithHeadingPrimary,
       HighlightSliceVariation,
       HighlightSliceDefault,
+      HighlightSliceBackgroundWithHeading,
+      PartnersSlice,
+      PartnersSliceDefaultPrimary,
+      PartnersSliceVariation,
+      PartnersSliceDefault,
+      ProductInfoSlice,
+      ProductInfoSliceDefaultPrimary,
+      ProductInfoSliceVariation,
+      ProductInfoSliceDefault,
+      PropertiesSlice,
+      PropertiesSliceDefaultPrimaryPropertyCardsItem,
+      PropertiesSliceDefaultPrimary,
+      PropertiesSliceVariation,
+      PropertiesSliceDefault,
       TestimonialsSlice,
       TestimonialsSliceDefaultPrimaryClientTestimonialItem,
       TestimonialsSliceDefaultPrimary,

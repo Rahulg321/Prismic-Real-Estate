@@ -1,0 +1,57 @@
+{
+  "id": "properties",
+  "type": "SharedSlice",
+  "name": "Properties",
+  "description": "Properties",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "tagline": {
+          "type": "Text",
+          "config": {
+            "label": "Tagline",
+            "placeholder": ""
+          }
+        },
+        "property_cards": {
+          "type": "Group",
+          "config": {
+            "label": "Property Cards",
+            "repeat": true,
+            "fields": {
+              "card_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Card Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "card_heading": {
+                "type": "Text",
+                "config": {
+                  "label": "Card Heading",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
