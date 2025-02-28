@@ -1,6 +1,9 @@
 {
   "format": "page",
   "id": "page",
+  "label": "page",
+  "repeatable": true,
+  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -10,11 +13,51 @@
         }
       },
       "slices": {
-        "config": {
-          "choices": {}
-        },
+        "type": "Slices",
         "fieldset": "Slice Zone",
-        "type": "Slices"
+        "config": {
+          "choices": {
+            "featured_estates": {
+              "type": "SharedSlice"
+            },
+            "stats_slice": {
+              "type": "SharedSlice"
+            },
+            "contact_form_slice": {
+              "type": "SharedSlice"
+            },
+            "our_team": {
+              "type": "SharedSlice"
+            },
+            "product_info": {
+              "type": "SharedSlice"
+            },
+            "properties": {
+              "type": "SharedSlice"
+            },
+            "highlight": {
+              "type": "SharedSlice"
+            },
+            "follow_us": {
+              "type": "SharedSlice"
+            },
+            "testimonials": {
+              "type": "SharedSlice"
+            },
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "connect": {
+              "type": "SharedSlice"
+            },
+            "partners": {
+              "type": "SharedSlice"
+            },
+            "blog_index": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     },
     "SEO & Metadata": {
@@ -44,8 +87,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "page",
-  "repeatable": true,
-  "status": true
+  }
 }

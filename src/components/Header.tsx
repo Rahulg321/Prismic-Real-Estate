@@ -14,12 +14,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
-const aboutItems = [
-  { title: "Our Story", href: "/about/story" },
-  { title: "Team", href: "/about/team" },
-  { title: "Careers", href: "/about/careers" },
-];
-
 const propertyItems = [
   { title: "For Sale", href: "/properties/for-sale" },
   { title: "For Rent", href: "/properties/for-rent" },
@@ -46,21 +40,14 @@ export default function Header() {
           </div>
           <nav className="hidden md:flex">
             <NavigationMenu>
+              <NavigationMenuItem>
+                <Link href="/about-us" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    About Us
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
               <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>About</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      {aboutItems.map((item) => (
-                        <ListItem
-                          key={item.title}
-                          title={item.title}
-                          href={item.href}
-                        />
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Properties</NavigationMenuTrigger>
                   <NavigationMenuContent>

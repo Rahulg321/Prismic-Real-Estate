@@ -1,0 +1,18 @@
+{
+  "id": "stats_slice",
+  "type": "SharedSlice",
+  "name": "StatsSlice",
+  "description": "StatsSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

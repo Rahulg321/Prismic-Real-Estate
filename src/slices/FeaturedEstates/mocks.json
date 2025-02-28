@@ -1,0 +1,93 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "bottom",
+				"type": "Text"
+			},
+			"tagline": {
+				"__TYPE__": "FieldContent",
+				"value": "species",
+				"type": "Text"
+			},
+			"estate": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "surrounded",
+									"type": "Text"
+								}
+							],
+							[
+								"tag",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "short",
+									"type": "Text"
+								}
+							],
+							[
+								"bed",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "five",
+									"type": "Text"
+								}
+							],
+							[
+								"bath",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "deep",
+									"type": "Text"
+								}
+							],
+							[
+								"square_ft",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "product",
+									"type": "Text"
+								}
+							],
+							[
+								"estate_image",
+								{
+									"__TYPE__": "ImageContent",
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+										"width": 4380,
+										"height": 2895
+									},
+									"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+									"width": 4380,
+									"height": 2895,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"thumbnails": {}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

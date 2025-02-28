@@ -65,10 +65,13 @@ const Highlight = ({ slice }: HighlightProps) => {
       ) : (
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="relative h-[500px] w-full">
-              <PrismicImage
-                field={slice.primary.featured_image}
-                className="object-cover rounded-lg"
+            <div className="relative aspect-square">
+              <Image
+                src={slice.primary.featured_image.url as string}
+                alt="Luxury living room"
+                fill
+                className="object-cover"
+                priority
               />
             </div>
 

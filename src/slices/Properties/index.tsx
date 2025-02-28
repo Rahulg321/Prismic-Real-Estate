@@ -20,7 +20,7 @@ const Properties = ({ slice }: PropertiesProps) => {
           <h2 className="text-4xl md:text-5xl mb-12">Featured Properties</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
           {slice.primary.property_cards.map((property, index) => (
             <PropertyCard
               key={index}

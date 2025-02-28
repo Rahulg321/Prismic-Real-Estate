@@ -135,7 +135,7 @@ p {
   break-inside: avoid;
   margin-bottom: 1.5em;
 }
-/* 
+/*
 .marquee {
   width: 100%;
   overflow: hidden;
@@ -174,5 +174,17 @@ p {
 @media screen and (max-width: 458px) {
   .blog-index {
     columns: 1;
+  }
+}
+
+/*
+---break--- */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

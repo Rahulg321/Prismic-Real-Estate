@@ -187,7 +187,20 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = never;
+type PageDocumentDataSlicesSlice =
+  | FeaturedEstatesSlice
+  | StatsSliceSlice
+  | ContactFormSliceSlice
+  | OurTeamSlice
+  | ProductInfoSlice
+  | PropertiesSlice
+  | HighlightSlice
+  | FollowUsSlice
+  | TestimonialsSlice
+  | HeroSlice
+  | ConnectSlice
+  | PartnersSlice
+  | BlogIndexSlice;
 
 /**
  * Content for page documents
@@ -386,6 +399,203 @@ type ConnectSliceVariation = ConnectSliceDefault;
 export type ConnectSlice = prismic.SharedSlice<
   "connect",
   ConnectSliceVariation
+>;
+
+/**
+ * Primary content in *ContactFormSlice → Default → Primary*
+ */
+export interface ContactFormSliceSliceDefaultPrimary {
+  /**
+   * Heading field in *ContactFormSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form_slice.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *ContactFormSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form_slice.default.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * Sub Heading field in *ContactFormSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form_slice.default.primary.sub_heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  sub_heading: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ContactFormSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactFormSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactFormSlice*
+ */
+type ContactFormSliceSliceVariation = ContactFormSliceSliceDefault;
+
+/**
+ * ContactFormSlice Shared Slice
+ *
+ * - **API ID**: `contact_form_slice`
+ * - **Description**: ContactFormSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSliceSlice = prismic.SharedSlice<
+  "contact_form_slice",
+  ContactFormSliceSliceVariation
+>;
+
+/**
+ * Item in *FeaturedEstates → Default → Primary → Estate*
+ */
+export interface FeaturedEstatesSliceDefaultPrimaryEstateItem {
+  /**
+   * Title field in *FeaturedEstates → Default → Primary → Estate*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.estate[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Tag field in *FeaturedEstates → Default → Primary → Estate*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.estate[].tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
+
+  /**
+   * Bed field in *FeaturedEstates → Default → Primary → Estate*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.estate[].bed
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bed: prismic.KeyTextField;
+
+  /**
+   * Bath field in *FeaturedEstates → Default → Primary → Estate*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.estate[].bath
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bath: prismic.KeyTextField;
+
+  /**
+   * Square FT field in *FeaturedEstates → Default → Primary → Estate*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.estate[].square_ft
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  square_ft: prismic.KeyTextField;
+
+  /**
+   * Estate Image field in *FeaturedEstates → Default → Primary → Estate*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.estate[].estate_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  estate_image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *FeaturedEstates → Default → Primary*
+ */
+export interface FeaturedEstatesSliceDefaultPrimary {
+  /**
+   * Heading field in *FeaturedEstates → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *FeaturedEstates → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * Estate field in *FeaturedEstates → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_estates.default.primary.estate[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  estate: prismic.GroupField<
+    Simplify<FeaturedEstatesSliceDefaultPrimaryEstateItem>
+  >;
+}
+
+/**
+ * Default variation for FeaturedEstates Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedEstatesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturedEstatesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedEstates*
+ */
+type FeaturedEstatesSliceVariation = FeaturedEstatesSliceDefault;
+
+/**
+ * FeaturedEstates Shared Slice
+ *
+ * - **API ID**: `featured_estates`
+ * - **Description**: FeaturedEstates
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedEstatesSlice = prismic.SharedSlice<
+  "featured_estates",
+  FeaturedEstatesSliceVariation
 >;
 
 /**
@@ -606,6 +816,116 @@ export type HighlightSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *OurTeam → Default → Primary → members*
+ */
+export interface OurTeamSliceDefaultPrimaryMembersItem {
+  /**
+   * First Name field in *OurTeam → Default → Primary → members*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_team.default.primary.members[].first_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  first_name: prismic.KeyTextField;
+
+  /**
+   * Last Name field in *OurTeam → Default → Primary → members*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_team.default.primary.members[].last_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  last_name: prismic.KeyTextField;
+
+  /**
+   * Designation field in *OurTeam → Default → Primary → members*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_team.default.primary.members[].designation
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  designation: prismic.KeyTextField;
+
+  /**
+   * Member Image field in *OurTeam → Default → Primary → members*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_team.default.primary.members[].member_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  member_image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *OurTeam → Default → Primary*
+ */
+export interface OurTeamSliceDefaultPrimary {
+  /**
+   * Heading field in *OurTeam → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_team.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *OurTeam → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_team.default.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * members field in *OurTeam → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_team.default.primary.members[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  members: prismic.GroupField<Simplify<OurTeamSliceDefaultPrimaryMembersItem>>;
+}
+
+/**
+ * Default variation for OurTeam Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurTeamSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurTeamSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OurTeam*
+ */
+type OurTeamSliceVariation = OurTeamSliceDefault;
+
+/**
+ * OurTeam Shared Slice
+ *
+ * - **API ID**: `our_team`
+ * - **Description**: OurTeam
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurTeamSlice = prismic.SharedSlice<
+  "our_team",
+  OurTeamSliceVariation
+>;
+
+/**
  * Primary content in *Partners → Default → Primary*
  */
 export interface PartnersSliceDefaultPrimary {
@@ -808,6 +1128,36 @@ export type PropertiesSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Default variation for StatsSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StatsSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *StatsSlice*
+ */
+type StatsSliceSliceVariation = StatsSliceSliceDefault;
+
+/**
+ * StatsSlice Shared Slice
+ *
+ * - **API ID**: `stats_slice`
+ * - **Description**: StatsSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StatsSliceSlice = prismic.SharedSlice<
+  "stats_slice",
+  StatsSliceSliceVariation
+>;
+
+/**
  * Item in *Testimonials → Default → Primary → Client Testimonial*
  */
 export interface TestimonialsSliceDefaultPrimaryClientTestimonialItem {
@@ -939,6 +1289,15 @@ declare module "@prismicio/client" {
       ConnectSliceDefaultPrimary,
       ConnectSliceVariation,
       ConnectSliceDefault,
+      ContactFormSliceSlice,
+      ContactFormSliceSliceDefaultPrimary,
+      ContactFormSliceSliceVariation,
+      ContactFormSliceSliceDefault,
+      FeaturedEstatesSlice,
+      FeaturedEstatesSliceDefaultPrimaryEstateItem,
+      FeaturedEstatesSliceDefaultPrimary,
+      FeaturedEstatesSliceVariation,
+      FeaturedEstatesSliceDefault,
       FollowUsSlice,
       FollowUsSliceVariation,
       FollowUsSliceDefault,
@@ -952,6 +1311,11 @@ declare module "@prismicio/client" {
       HighlightSliceVariation,
       HighlightSliceDefault,
       HighlightSliceBackgroundWithHeading,
+      OurTeamSlice,
+      OurTeamSliceDefaultPrimaryMembersItem,
+      OurTeamSliceDefaultPrimary,
+      OurTeamSliceVariation,
+      OurTeamSliceDefault,
       PartnersSlice,
       PartnersSliceDefaultPrimary,
       PartnersSliceVariation,
@@ -965,6 +1329,9 @@ declare module "@prismicio/client" {
       PropertiesSliceDefaultPrimary,
       PropertiesSliceVariation,
       PropertiesSliceDefault,
+      StatsSliceSlice,
+      StatsSliceSliceVariation,
+      StatsSliceSliceDefault,
       TestimonialsSlice,
       TestimonialsSliceDefaultPrimaryClientTestimonialItem,
       TestimonialsSliceDefaultPrimary,
