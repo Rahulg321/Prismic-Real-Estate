@@ -26,7 +26,6 @@ export function BlogCard({ post }: { post: BlogPostDocument }) {
           <h3 className="text-xl text-gray-900 group-hover:text-[#C5A880] transition-colors">
             {post.data.title}
           </h3>
-          <OutlineButton>Read</OutlineButton>
         </div>
       </Link>
     </article>

@@ -16,22 +16,16 @@ const BlogIndex = async ({ slice }: BlogIndexProps) => {
   const blogposts = await client.getAllByType("blog_post");
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
+    <section className="big-container block-space">
+      <div className="">
         <div className="text-center mb-12">
           <p className="text-[#C5A880] text-lg mb-4">
             DON&apos;T MISS THE LATEST NEWS
           </p>
-          <h2 className="text-4xl md:text-5xl mb-12">Our Blog</h2>
+          <h2 className="md:text-5xl mb:6 md:mb:8 lg:mb-12">Our Blog</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {blogposts.map((post, index) => (
-            <BlogCard key={index} post={post} />
-          ))}
-          {blogposts.map((post, index) => (
-            <BlogCard key={index} post={post} />
-          ))}
           {blogposts.map((post, index) => (
             <BlogCard key={index} post={post} />
           ))}

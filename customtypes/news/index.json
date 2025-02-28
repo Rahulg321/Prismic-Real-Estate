@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "page",
-  "label": "page",
+  "id": "news",
+  "label": "News",
   "repeatable": true,
   "status": true,
   "json": {
@@ -12,45 +12,37 @@
           "label": "UID"
         }
       },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "date_published": {
+        "type": "Date",
+        "config": {
+          "label": "Date Published",
+          "placeholder": ""
+        }
+      },
+      "featured_image": {
+        "type": "Image",
+        "config": {
+          "label": "Featured Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "news_index": {
-              "type": "SharedSlice"
-            },
-            "text_block": {
-              "type": "SharedSlice"
-            },
-            "listing_index": {
-              "type": "SharedSlice"
-            },
-            "featured_estates": {
-              "type": "SharedSlice"
-            },
-            "stats_slice": {
-              "type": "SharedSlice"
-            },
-            "contact_form_slice": {
-              "type": "SharedSlice"
-            },
-            "our_team": {
-              "type": "SharedSlice"
-            },
-            "product_info": {
-              "type": "SharedSlice"
-            },
-            "properties": {
-              "type": "SharedSlice"
-            },
-            "highlight": {
-              "type": "SharedSlice"
-            },
             "follow_us": {
               "type": "SharedSlice"
             },
-            "testimonials": {
+            "listing_index": {
               "type": "SharedSlice"
             },
             "hero": {
@@ -59,10 +51,7 @@
             "connect": {
               "type": "SharedSlice"
             },
-            "partners": {
-              "type": "SharedSlice"
-            },
-            "blog_index": {
+            "text_block": {
               "type": "SharedSlice"
             }
           }

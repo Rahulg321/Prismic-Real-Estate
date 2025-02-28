@@ -15,9 +15,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const propertyItems = [
-  { title: "For Sale", href: "/properties/for-sale" },
-  { title: "For Rent", href: "/properties/for-rent" },
-  { title: "New Developments", href: "/properties/new-developments" },
+  { title: "Residential", href: "/residential" },
+  { title: "Commericial", href: "/commercial" },
+  { title: "Resale", href: "/resale" },
+  { title: "Off Plan", href: "/off-plan" },
 ];
 
 const serviceItems = [
@@ -40,16 +41,9 @@ export default function Header() {
           </div>
           <nav className="hidden md:flex">
             <NavigationMenu>
-              <NavigationMenuItem>
-                <Link href="/about-us" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    About Us
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Properties</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>Buy</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       {propertyItems.map((item) => (
@@ -75,6 +69,25 @@ export default function Header() {
                       ))}
                     </ul>
                   </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link href="/about-us" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      About Us
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/blog" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Blog
+                    </NavigationMenuLink>
+                  </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/contact" legacyBehavior passHref>

@@ -1,0 +1,16 @@
+{
+  "id": "listing_index",
+  "type": "SharedSlice",
+  "name": "ListingIndex",
+  "description": "ListingIndex",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}
