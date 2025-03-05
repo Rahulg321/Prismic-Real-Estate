@@ -15,16 +15,8 @@ import {
 import { cn } from "@/lib/utils";
 
 const propertyItems = [
-  { title: "Residential", href: "/residential" },
-  { title: "Commericial", href: "/commercial" },
   { title: "Resale", href: "/resale" },
   { title: "Off Plan", href: "/off-plan" },
-];
-
-const serviceItems = [
-  { title: "Property Management", href: "/services/property-management" },
-  { title: "Mortgage Services", href: "/services/mortgage" },
-  { title: "Valuation", href: "/services/valuation" },
 ];
 
 export default function Header() {
@@ -43,7 +35,7 @@ export default function Header() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Buy</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>Residential</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       {propertyItems.map((item) => (
@@ -56,21 +48,6 @@ export default function Header() {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      {serviceItems.map((item) => (
-                        <ListItem
-                          key={item.title}
-                          title={item.title}
-                          href={item.href}
-                        />
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
                 <NavigationMenuItem>
                   <Link href="/about-us" legacyBehavior passHref>
                     <NavigationMenuLink
@@ -101,14 +78,14 @@ export default function Header() {
               </NavigationMenuList>
             </NavigationMenu>
           </nav>
-          <div className="hidden md:flex items-center">
+          {/* <div className="hidden md:flex items-center">
             <Button
               variant="outline"
               className="text-gray-900 border-gray-900 hover:bg-gray-100"
             >
               Sign In
             </Button>
-          </div>
+          </div> */}
           <div className="md:hidden">
             <Button
               variant="ghost"
@@ -161,7 +138,7 @@ export default function Header() {
               Contact
             </Link>
           </div>
-          <div className="pt-4 pb-3 border-t border-gray-200">
+          {/* <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="px-2">
               <Button
                 variant="outline"
@@ -170,7 +147,7 @@ export default function Header() {
                 Sign In
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </header>

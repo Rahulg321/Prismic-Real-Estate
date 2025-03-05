@@ -1,10 +1,7 @@
-"use client";
-
 import { OutlineButton } from "@/components/Buttons/outline-button";
 import { Button } from "@/components/ui/button";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import { useEffect, useState } from "react";
 
 /**
  * Props for `Hero`.
@@ -19,7 +16,7 @@ const Hero = ({ slice }: HeroProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative overflow-hidden bg-slate-900 min-h-screen"
+      className="relative overflow-hidden bg-slate-900 min-h-[75vh] max-h-[80vh]"
     >
       <video
         src={"/background-video.mp4"}

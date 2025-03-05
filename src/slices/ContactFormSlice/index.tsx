@@ -16,6 +16,7 @@ const ContactFormSlice = ({ slice }: ContactFormSliceProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="block-space"
     >
       <div className="text-center ">
         <p className="text-amber-600 uppercase font-medium">
