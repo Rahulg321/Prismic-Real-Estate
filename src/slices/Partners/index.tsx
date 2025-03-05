@@ -15,27 +15,27 @@ const Partners = ({ slice }: PartnersProps) => {
   const partners = [
     {
       name: "DLF",
-      logo: "/placeholder.svg?height=80&width=160",
+      logo: "/logos/damac.png",
       href: "https://www.dlf.in",
     },
     {
       name: "EMAAR",
-      logo: "/placeholder.svg?height=80&width=160",
+      logo: "/logos/emaar.png",
       href: "https://www.emaar.com",
     },
     {
       name: "Godrej",
-      logo: "/placeholder.svg?height=80&width=160",
+      logo: "/logos/Azizi-Developments.png",
       href: "https://www.godrejproperties.com",
     },
     {
-      name: "Adani",
-      logo: "/placeholder.svg?height=80&width=160",
+      name: "Nakheel",
+      logo: "/logos/nakheel.png",
       href: "https://www.adani.com",
     },
     {
       name: "SOBHA Realty",
-      logo: "/placeholder.svg?height=80&width=160",
+      logo: "/logos/sobha-realty.png",
       href: "https://www.sobha.com",
     },
   ];
@@ -56,14 +56,13 @@ const Partners = ({ slice }: PartnersProps) => {
               rel="noopener noreferrer"
               className="w-full max-w-[160px] hover:opacity-75 transition-opacity"
             >
-              <div className="relative h-12 md:h-16">
-                <Image
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  fill
-                  className="object-contain"
-                />
-              </div>
+              <Image
+                src={partner.logo}
+                height={200}
+                width={200}
+                alt={`${partner.name} logo`}
+                className="object-contain"
+              />
               <span className="sr-only">{partner.name}</span>
             </Link>
           ))}

@@ -1,183 +1,412 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
+import type React from "react";
 
-const propertyItems = [
-  { title: "Resale", href: "/resale" },
-  { title: "Off Plan", href: "/off-plan" },
+import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+
+type MenuItem = {
+  label: string;
+  href?: string;
+  children?: MenuItem[];
+};
+
+const menuItems: MenuItem[] = [
+  {
+    label: "About Us",
+    href: "/about-us",
+  },
+  {
+    label: "Buy",
+    children: [
+      {
+        label: "Residential",
+        children: [
+          {
+            label: "Off-Plan",
+            href: "/off-plan",
+          },
+          {
+            label: "Resale",
+            href: "/resale",
+          },
+        ],
+      },
+      {
+        label: "Commercial",
+        children: [
+          {
+            label: "Off-Plan",
+            href: "/commercial/off-plan",
+          },
+          {
+            label: "Resale",
+            href: "/buy/commercial/resale",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Rent",
+    children: [
+      {
+        label: "Residential",
+        children: [
+          {
+            label: "Apartments",
+            href: "/rent/residential/apartments",
+          },
+          {
+            label: "Villas",
+            href: "/rent/residential/villas",
+          },
+          {
+            label: "Townhouses",
+            href: "/rent/residential/townhouses",
+          },
+          {
+            label: "Penthouses",
+            href: "/rent/residential/penthouses",
+          },
+        ],
+      },
+      {
+        label: "Commercial",
+        children: [
+          {
+            label: "Offices",
+            href: "/rent/commercial/offices",
+          },
+          {
+            label: "Shops",
+            href: "/rent/commercial/shops",
+          },
+          {
+            label: "Warehouses",
+            href: "/rent/commercial/warehouses",
+          },
+          {
+            label: "Retail",
+            href: "/rent/commercial/retail",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
+  {
+    label: "Contact Us",
+    href: "/contact",
+  },
 ];
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Close mobile menu when screen size changes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileMenuOpen]);
+
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-20 bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-6">
-          <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-gray-900">
-              LocalBricks
-            </Link>
-          </div>
-          <nav className="hidden md:flex">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Residential</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      {propertyItems.map((item) => (
-                        <ListItem
-                          key={item.title}
-                          title={item.title}
-                          href={item.href}
-                        />
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/about-us" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      About Us
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/blog" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Blog
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/contact" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      Contact
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </nav>
-          {/* <div className="hidden md:flex items-center">
-            <Button
-              variant="outline"
-              className="text-gray-900 border-gray-900 hover:bg-gray-100"
-            >
-              Sign In
-            </Button>
-          </div> */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              className="text-gray-900"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </Button>
-          </div>
+    <header className="relative z-50">
+      <div className="flex h-20 items-center justify-between 0 px-4 md:px-6 ">
+        <div className="flex items-center gap-2">
+          <Logo />
         </div>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {/* Desktop navigation */}
+        <nav className="hidden md:flex md:flex-1 md:justify-center md:gap-8">
+          {menuItems.map((item) => (
+            <DesktopMenuItem key={item.label} item={item} />
+          ))}
+        </nav>
       </div>
-      {isMobileMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link
-              href="/about"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-            >
-              About
-            </Link>
-            <Link
-              href="/properties"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-            >
-              Properties
-            </Link>
-            <Link
-              href="/services"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-            >
-              Services
-            </Link>
-            <Link
-              href="/contact"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-            >
-              Contact
-            </Link>
-          </div>
-          {/* <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="px-2">
-              <Button
-                variant="outline"
-                className="w-full text-gray-900 border-gray-900 hover:bg-gray-100"
-              >
-                Sign In
-              </Button>
-            </div>
-          </div> */}
+
+      {/* Mobile navigation overlay */}
+      <div
+        className={cn(
+          "fixed inset-0 z-40 bg-black/50 md:hidden transition-opacity duration-300",
+          mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Mobile navigation - slides from right */}
+      <div
+        className={cn(
+          "fixed inset-y-0 right-0 z-50 w-[80%] max-w-sm bg-black/95 shadow-xl md:hidden",
+          "transform transition-transform duration-300 ease-in-out",
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="flex h-20 items-center justify-between px-4 border-b border-gray-800">
+          <span className="text-xl font-bold text-white">Menu</span>
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={24} className="text-white" />
+          </button>
         </div>
-      )}
+        <nav className="h-[calc(100%-5rem)] overflow-y-auto">
+          <div className="flex flex-col p-4">
+            {menuItems.map((item) => (
+              <MobileMenuItem
+                key={item.label}
+                item={item}
+                closeMenu={() => setMobileMenuOpen(false)}
+              />
+            ))}
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }
 
-const ListItem = ({
-  className,
-  title,
-  href,
-  ...props
-}: {
-  className?: string;
-  title: string;
-  href: string;
-}) => {
+function DesktopMenuItem({ item }: { item: MenuItem }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+        setActiveSubmenu(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleSubMenuClick = (label: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveSubmenu(activeSubmenu === label ? null : label);
+  };
+
+  if (!item.children) {
+    return (
+      <Link
+        href={item.href || "#"}
+        className="relative px-1 py-2 text-lg font-medium"
+      >
+        {item.label}
+      </Link>
+    );
+  }
+
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          href={href}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-        </Link>
-      </NavigationMenuLink>
-    </li>
+    <div ref={menuRef} className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-1 px-1 py-2 text-lg font-medium"
+      >
+        {item.label}
+        <ChevronDown
+          className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")}
+        />
+      </button>
+
+      {isOpen && (
+        <div className="absolute left-0 top-full min-w-[220px] rounded-md bg-white py-2 shadow-lg">
+          {item.children.map((child) => (
+            <div key={child.label} className="relative">
+              {!child.children ? (
+                <Link
+                  href={child.href || "#"}
+                  className="flex w-full items-center px-4 py-2 text-gray-800"
+                >
+                  <span className="mr-2 h-2 w-2 rounded-full bg-gray-400"></span>
+                  {child.label}
+                </Link>
+              ) : (
+                <>
+                  <button
+                    onClick={(e) => handleSubMenuClick(child.label, e)}
+                    className="flex w-full cursor-pointer items-center justify-between px-4 py-2 text-gray-800"
+                  >
+                    <div className="flex items-center">
+                      <span className="mr-2 h-2 w-2 rounded-full bg-gray-400"></span>
+                      {child.label}
+                    </div>
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 transition-transform",
+                        activeSubmenu === child.label
+                          ? "rotate-180"
+                          : "-rotate-90"
+                      )}
+                    />
+                  </button>
+                  {activeSubmenu === child.label && (
+                    <div className="absolute left-full top-0 min-w-[220px] rounded-md bg-white py-2 shadow-lg">
+                      {child.children.map((subChild) => (
+                        <Link
+                          key={subChild.label}
+                          href={subChild.href || "#"}
+                          className="flex w-full items-center px-4 py-2 text-gray-800"
+                        >
+                          <span className="mr-2 h-2 w-2 rounded-full bg-gray-400"></span>
+                          {subChild.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
-};
+}
+
+function MobileMenuItem({
+  item,
+  closeMenu,
+}: {
+  item: MenuItem;
+  closeMenu: () => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [subMenuOpen, setSubMenuOpen] = useState<string | null>(null);
+
+  if (!item.children) {
+    return (
+      <Link
+        href={item.href || "#"}
+        className="border-b border-gray-800 py-4 text-lg font-medium text-white"
+        onClick={closeMenu}
+      >
+        {item.label}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="border-b border-gray-800">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex w-full items-center justify-between py-4 text-lg font-medium text-white"
+      >
+        {item.label}
+        <ChevronDown
+          className={cn("h-5 w-5 transition-transform", isOpen && "rotate-180")}
+        />
+      </button>
+
+      {isOpen && (
+        <div className="ml-4 space-y-1 pb-4">
+          {item.children.map((child) => (
+            <div key={child.label}>
+              {!child.children ? (
+                <Link
+                  href={child.href || "#"}
+                  className="flex items-center py-2 text-white/80"
+                  onClick={closeMenu}
+                >
+                  <span className="mr-2 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                  {child.label}
+                </Link>
+              ) : (
+                <>
+                  <button
+                    onClick={() =>
+                      setSubMenuOpen(
+                        subMenuOpen === child.label ? null : child.label
+                      )
+                    }
+                    className="flex w-full items-center justify-between py-2 text-white/80"
+                  >
+                    <div className="flex items-center">
+                      <span className="mr-2 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                      {child.label}
+                    </div>
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 transition-transform",
+                        subMenuOpen === child.label && "rotate-180"
+                      )}
+                    />
+                  </button>
+                  {subMenuOpen === child.label && (
+                    <div className="ml-4 space-y-1 py-2">
+                      {child.children.map((subChild) => (
+                        <Link
+                          key={subChild.label}
+                          href={subChild.href || "#"}
+                          className="flex items-center py-2 text-white/70"
+                          onClick={closeMenu}
+                        >
+                          <span className="mr-2 h-1.5 w-1.5 rounded-full bg-gray-500"></span>
+                          {subChild.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Logo() {
+  return (
+    <Link
+      href="/"
+      className="flex items-center gap-2 text-2xl font-bold sm:text-3xl"
+    >
+      <Image
+        src={"/logos/bricks-logo.png"}
+        alt="local bricks logo"
+        width={200}
+        height={200}
+      />
+    </Link>
+  );
+}

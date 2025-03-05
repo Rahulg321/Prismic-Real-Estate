@@ -16,11 +16,11 @@ const Hero = ({ slice }: HeroProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative overflow-hidden bg-slate-900 min-h-[75vh] max-h-[80vh]"
+      className="relative overflow-hidden bg-slate-900 min-h-screen"
     >
       <video
-        src={"/background-video.mp4"}
-        className="w-full h-full object-cover"
+        src={"/local-bricks-bgVideo.mp4"}
+        className="w-full h-full object-cover "
         autoPlay
         loop
         muted
