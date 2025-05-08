@@ -27,11 +27,11 @@ const menuItems: MenuItem[] = [
         children: [
           {
             label: "Off-Plan",
-            href: "/off-plan",
+            href: "/buy/residential/off-plan",
           },
           {
             label: "Resale",
-            href: "/resale",
+            href: "/buy/residential/resale",
           },
         ],
       },
@@ -40,7 +40,7 @@ const menuItems: MenuItem[] = [
         children: [
           {
             label: "Off-Plan",
-            href: "/commercial/off-plan",
+            href: "/buy/commercial/off-plan",
           },
           {
             label: "Resale",

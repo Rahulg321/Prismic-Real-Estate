@@ -83,6 +83,35 @@
           "thumbnails": []
         }
       },
+      "property_type": {
+        "type": "Select",
+        "config": {
+          "label": "Property Type",
+          "placeholder": "",
+          "options": ["Residential ", "Commercial"]
+        }
+      },
+      "listing_type": {
+        "type": "Select",
+        "config": {
+          "label": "Listing Type",
+          "placeholder": "",
+          "options": ["Buy ", "Rent"]
+        }
+      },
+      "route_name": {
+        "type": "Link",
+        "config": {
+          "label": "Route Name",
+          "select": "document",
+          "customtypes": [
+            "buyresidential",
+            "rent_commercial",
+            "rent_residential",
+            "buycommercial"
+          ]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

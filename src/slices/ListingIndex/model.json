@@ -10,7 +10,32 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "listing_type": {
+          "type": "Select",
+          "config": {
+            "label": "Listing Type",
+            "placeholder": "",
+            "options": [
+              "Buy",
+              "Rent"
+            ]
+          }
+        },
+        "property_type": {
+          "type": "Select",
+          "config": {
+            "label": "Property Type",
+            "placeholder": "",
+            "options": [
+              "Residential ",
+              "Commercial"
+            ]
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

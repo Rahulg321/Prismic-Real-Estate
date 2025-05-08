@@ -105,6 +105,160 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
+type BuycommercialDocumentDataSlicesSlice =
+  | TextBlockSlice
+  | ProductInfoSlice
+  | PropertiesSlice
+  | TestimonialsSlice
+  | StatsSliceSlice
+  | HeroSlice
+  | FeaturedEstatesSlice
+  | OurTeamSlice
+  | FollowUsSlice
+  | BlogIndexSlice
+  | PartnersSlice
+  | ConnectSlice
+  | ContactFormSliceSlice
+  | NewsIndexSlice;
+
+/**
+ * Content for BuyCommercial documents
+ */
+interface BuycommercialDocumentData {
+  /**
+   * Slice Zone field in *BuyCommercial*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buycommercial.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BuycommercialDocumentDataSlicesSlice> /**
+   * Meta Title field in *BuyCommercial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: buycommercial.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *BuyCommercial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: buycommercial.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *BuyCommercial*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buycommercial.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * BuyCommercial document from Prismic
+ *
+ * - **API ID**: `buycommercial`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BuycommercialDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<BuycommercialDocumentData>,
+    "buycommercial",
+    Lang
+  >;
+
+type BuyresidentialDocumentDataSlicesSlice =
+  | FollowUsSlice
+  | FeaturedEstatesSlice
+  | OurTeamSlice
+  | ConnectSlice
+  | HeroSlice
+  | StatsSliceSlice
+  | TestimonialsSlice
+  | ProductInfoSlice
+  | TextBlockSlice
+  | PropertiesSlice;
+
+/**
+ * Content for BuyResidential documents
+ */
+interface BuyresidentialDocumentData {
+  /**
+   * Slice Zone field in *BuyResidential*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buyresidential.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BuyresidentialDocumentDataSlicesSlice> /**
+   * Meta Title field in *BuyResidential*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: buyresidential.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *BuyResidential*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: buyresidential.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *BuyResidential*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buyresidential.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * BuyResidential document from Prismic
+ *
+ * - **API ID**: `buyresidential`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BuyresidentialDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<BuyresidentialDocumentData>,
+    "buyresidential",
+    Lang
+  >;
+
 type HomepageDocumentDataSlicesSlice =
   | BlogIndexSlice
   | ProductInfoSlice
@@ -472,6 +626,41 @@ interface PropertyDocumentData {
   property_image: prismic.ImageField<never>;
 
   /**
+   * Property Type field in *Property*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: property.property_type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  property_type: prismic.SelectField<"Residential " | "Commercial">;
+
+  /**
+   * Listing Type field in *Property*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: property.listing_type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  listing_type: prismic.SelectField<"Buy " | "Rent">;
+
+  /**
+   * Route Name field in *Property*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: property.route_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  route_name: prismic.ContentRelationshipField<
+    "buyresidential" | "rent_commercial" | "rent_residential" | "buycommercial"
+  >;
+
+  /**
    * Slice Zone field in *Property*
    *
    * - **Field Type**: Slice Zone
@@ -530,12 +719,173 @@ export type PropertyDocument<Lang extends string = string> =
     Lang
   >;
 
+type RentCommercialDocumentDataSlicesSlice =
+  | PropertiesSlice
+  | TestimonialsSlice
+  | HighlightSlice
+  | TextBlockSlice
+  | StatsSliceSlice
+  | ProductInfoSlice
+  | HeroSlice
+  | FeaturedEstatesSlice
+  | OurTeamSlice
+  | PartnersSlice
+  | BlogIndexSlice
+  | FollowUsSlice
+  | ConnectSlice
+  | ContactFormSliceSlice;
+
+/**
+ * Content for Rent Commercial documents
+ */
+interface RentCommercialDocumentData {
+  /**
+   * Slice Zone field in *Rent Commercial*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rent_commercial.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<RentCommercialDocumentDataSlicesSlice> /**
+   * Meta Title field in *Rent Commercial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: rent_commercial.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Rent Commercial*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: rent_commercial.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Rent Commercial*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rent_commercial.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Rent Commercial document from Prismic
+ *
+ * - **API ID**: `rent_commercial`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type RentCommercialDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<RentCommercialDocumentData>,
+    "rent_commercial",
+    Lang
+  >;
+
+type RentResidentialDocumentDataSlicesSlice =
+  | TestimonialsSlice
+  | HighlightSlice
+  | ProductInfoSlice
+  | StatsSliceSlice
+  | TextBlockSlice
+  | HeroSlice
+  | OurTeamSlice
+  | PartnersSlice
+  | BlogIndexSlice
+  | FollowUsSlice
+  | ConnectSlice
+  | ContactFormSliceSlice
+  | NewsIndexSlice;
+
+/**
+ * Content for Rent Residential documents
+ */
+interface RentResidentialDocumentData {
+  /**
+   * Slice Zone field in *Rent Residential*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rent_residential.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<RentResidentialDocumentDataSlicesSlice> /**
+   * Meta Title field in *Rent Residential*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: rent_residential.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Rent Residential*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: rent_residential.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Rent Residential*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rent_residential.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Rent Residential document from Prismic
+ *
+ * - **API ID**: `rent_residential`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type RentResidentialDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<RentResidentialDocumentData>,
+    "rent_residential",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | BlogPostDocument
+  | BuycommercialDocument
+  | BuyresidentialDocument
   | HomepageDocument
   | NewsDocument
   | PageDocument
-  | PropertyDocument;
+  | PropertyDocument
+  | RentCommercialDocument
+  | RentResidentialDocument;
 
 /**
  * Primary content in *BlogIndex → Default → Primary*
@@ -1087,6 +1437,31 @@ export type HighlightSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ListingIndex → Default → Primary*
+ */
+export interface ListingIndexSliceDefaultPrimary {
+  /**
+   * Listing Type field in *ListingIndex → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: listing_index.default.primary.listing_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  listing_type: prismic.SelectField<"Buy" | "Rent">;
+
+  /**
+   * Property Type field in *ListingIndex → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: listing_index.default.primary.property_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  property_type: prismic.SelectField<"Residential " | "Commercial">;
+}
+
+/**
  * Default variation for ListingIndex Slice
  *
  * - **API ID**: `default`
@@ -1095,7 +1470,7 @@ export type HighlightSlice = prismic.SharedSlice<
  */
 export type ListingIndexSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<ListingIndexSliceDefaultPrimary>,
   never
 >;
 
@@ -1674,6 +2049,12 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      BuycommercialDocument,
+      BuycommercialDocumentData,
+      BuycommercialDocumentDataSlicesSlice,
+      BuyresidentialDocument,
+      BuyresidentialDocumentData,
+      BuyresidentialDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
@@ -1686,6 +2067,12 @@ declare module "@prismicio/client" {
       PropertyDocument,
       PropertyDocumentData,
       PropertyDocumentDataSlicesSlice,
+      RentCommercialDocument,
+      RentCommercialDocumentData,
+      RentCommercialDocumentDataSlicesSlice,
+      RentResidentialDocument,
+      RentResidentialDocumentData,
+      RentResidentialDocumentDataSlicesSlice,
       AllDocumentTypes,
       BlogIndexSlice,
       BlogIndexSliceDefaultPrimary,
@@ -1719,6 +2106,7 @@ declare module "@prismicio/client" {
       HighlightSliceDefault,
       HighlightSliceBackgroundWithHeading,
       ListingIndexSlice,
+      ListingIndexSliceDefaultPrimary,
       ListingIndexSliceVariation,
       ListingIndexSliceDefault,
       NewsIndexSlice,

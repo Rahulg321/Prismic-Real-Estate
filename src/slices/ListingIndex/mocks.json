@@ -2,7 +2,18 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"listing_type": {
+				"__TYPE__": "FieldContent",
+				"value": "Buy",
+				"type": "Select"
+			},
+			"property_type": {
+				"__TYPE__": "FieldContent",
+				"value": "Commercial",
+				"type": "Select"
+			}
+		},
 		"items": []
 	}
 ]

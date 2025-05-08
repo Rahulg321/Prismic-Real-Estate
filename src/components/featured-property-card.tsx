@@ -9,8 +9,6 @@ interface PropertyCardProps {
 }
 
 export function PropertyCard({ name, image, alt }: PropertyCardProps) {
-  console.log({ name, image, alt });
-  console.log("inside component");
   return (
     <div className="group relative block aspect-square overflow-hidden">
       <Image

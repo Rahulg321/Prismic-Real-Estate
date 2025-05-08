@@ -1,10 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SliceZone } from "@prismicio/react";
-
 import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
-import { components } from "@/slices";
 import Head from "next/head";
 import ContentBody from "@/components/ContentBody";
 
@@ -14,6 +11,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
   const client = createClient();
   const page = await client.getByUID("news", uid).catch(() => notFound());
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -21,13 +19,13 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     author: {
       "@type": "Person",
       name: "Alisha Bajaj",
-      // The full URL must be provided, including the website's domain.
       url: new URL("https://www.google.com"),
     },
     image: prismic.asImageSrc(page.data.featured_image),
     datePublished: page.data.date_published,
     dateModified: page.last_publication_date,
   };
+
   return (
     <>
       <Head>
