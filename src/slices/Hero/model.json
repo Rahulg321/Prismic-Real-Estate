@@ -25,6 +25,25 @@
             "label": "Tagline",
             "placeholder": ""
           }
+        },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "Background Video",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
         }
       },
       "items": {}

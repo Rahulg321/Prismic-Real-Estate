@@ -1,6 +1,6 @@
 import { OutlineButton } from "@/components/Buttons/outline-button";
-import { Button } from "@/components/ui/button";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
+import { PrismicLink } from "@prismicio/react";
 import { SliceComponentProps } from "@prismicio/react";
 
 /**
@@ -16,23 +16,47 @@ const Hero = ({ slice }: HeroProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative overflow-hidden bg-slate-900 min-h-screen"
+      className="relative w-full h-screen overflow-hidden bg-slate-900"
     >
+      {/* Background Video */}
       <video
         src={"/local-bricks-bgVideo.mp4"}
-        className="w-full h-full object-cover "
+        className="absolute inset-0 w-full h-full object-cover"
         autoPlay
         loop
         muted
+        playsInline
       />
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-white px-12 text-pretty text-center">
-        <div className="mb-4 md:mb-6 lg:mb-8">
-          <h1>{slice.primary.heading}</h1>
-          <span>{slice.primary.tagline}</span>
+
+      {/* Dark Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40 z-[1]" />
+
+      {/* Content */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 sm:px-6 md:px-12">
+        <div className="max-w-5xl mx-auto text-center space-y-6 md:space-y-8">
+          {/* Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-2xl">
+            {slice.primary.heading}
+          </h1>
+
+          {/* Tagline */}
+          {slice.primary.tagline && (
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-light max-w-3xl mx-auto drop-shadow-lg">
+              {slice.primary.tagline}
+            </p>
+          )}
+
+          {/* CTA Button */}
+          {isFilled.link(slice.primary.button_link) && (
+            <div className="pt-4 md:pt-6">
+              <PrismicLink field={slice.primary.button_link}>
+                <OutlineButton className="text-white border-white hover:bg-white hover:text-black transition-all duration-300 text-base md:text-lg px-6 py-3 md:px-8 md:py-4">
+                  {slice.primary.button_link.text || "Learn More"}
+                </OutlineButton>
+              </PrismicLink>
+            </div>
+          )}
         </div>
-        <OutlineButton className="text-white border-white">
-          View All Properties
-        </OutlineButton>
       </div>
     </section>
   );

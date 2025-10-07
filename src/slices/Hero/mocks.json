@@ -12,6 +12,27 @@
 				"__TYPE__": "FieldContent",
 				"value": "machinery",
 				"type": "Text"
+			},
+			"background_video": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "kitchen"
+				}
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"key": "13698b3b-8b7e-481b-ae2d-83ba0141032b",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "difference"
+				}
 			}
 		},
 		"items": []

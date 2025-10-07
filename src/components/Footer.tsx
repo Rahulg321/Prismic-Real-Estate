@@ -1,25 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Youtube, Instagram, Linkedin, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-6xl mx-auto px-4 py-10 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* First Column */}
           <div className="flex flex-col items-start">
-            <div className="flex items-center mb-4">
+            <div className="mb-4">
               <Image
-                src="/placeholder.svg?height=40&width=40"
-                alt="LocalBricks Logo"
-                width={40}
-                height={40}
-                className="mr-2"
+                src="/logos/bricks-logo.png"
+                alt="local bricks logo"
+                width={150}
+                height={150}
               />
-              <h2 className="text-2xl font-bold text-white">LocalBricks</h2>
             </div>
             <p className="mb-4">Premium Service</p>
             <p className="mb-4">
@@ -27,10 +22,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <Link href="#" className="hover:text-white">
-                <Facebook size={24} />
-              </Link>
-              <Link href="#" className="hover:text-white">
-                <Twitter size={24} />
+                <Youtube size={24} />
               </Link>
               <Link href="#" className="hover:text-white">
                 <Instagram size={24} />
@@ -63,7 +55,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/properties" className="hover:text-white">
+                <Link
+                  href="/buy/residential/off-plan"
+                  className="hover:text-white"
+                >
                   Properties
                 </Link>
               </li>
@@ -77,23 +72,38 @@ export default function Footer() {
 
           {/* Third Column */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">
-              Subscribe to Our Newsletter
-            </h3>
-            <p className="mb-4">Stay updated with our latest news and offers</p>
-            <form className="space-y-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-gray-800 text-white border-gray-700"
-              />
-              <Button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                Subscribe
-              </Button>
-            </form>
+            <h3 className="text-lg font-semibold mb-4 text-white">Details</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <Phone
+                  size={20}
+                  className="mt-1 text-green-500 flex-shrink-0"
+                />
+                <div>
+                  <p className="font-semibold text-white">WhatsApp</p>
+                  <Link
+                    href="https://wa.me/919560014664"
+                    className="hover:text-white"
+                  >
+                    +91-9560014664
+                  </Link>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-1">
+                <MapPin size={20} className="mt-1 text-red-500 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-white">Address</p>
+                  <p className="text-sm">
+                    Vatika Business Park, Section 49,
+                    <br />
+                    Sohna Road, Gurugram,
+                    <br />
+                    Haryana - 122018
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
