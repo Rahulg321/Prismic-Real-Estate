@@ -16,6 +16,10 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   {
+    label: "Services",
+    href: "/services",
+  },
+  {
     label: "About Us",
     href: "/about-us",
   },

@@ -16,17 +16,27 @@ const Hero = ({ slice }: HeroProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative w-full h-screen overflow-hidden bg-slate-900"
+      className="relative w-full min-h-[80vh] overflow-hidden bg-slate-900"
     >
-      {/* Background Video */}
-      <video
+      {/* <video
         src={"/local-bricks-bgVideo.mp4"}
         className="absolute inset-0 w-full h-full object-cover"
         autoPlay
         loop
         muted
         playsInline
-      />
+      /> */}
+
+      {isFilled.link(slice.primary.background_video) && (
+        <video
+          src={slice.primary.background_video.url as string}
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      )}
 
       {/* Dark Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40 z-[1]" />
@@ -35,13 +45,13 @@ const Hero = ({ slice }: HeroProps) => {
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 sm:px-6 md:px-12">
         <div className="max-w-5xl mx-auto text-center space-y-6 md:space-y-8">
           {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-2xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight drop-shadow-2xl">
             {slice.primary.heading}
           </h1>
 
           {/* Tagline */}
           {slice.primary.tagline && (
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-light max-w-3xl mx-auto drop-shadow-lg">
+            <p className="text-lg sm:text-xl  text-white/90 font-light max-w-3xl mx-auto drop-shadow-lg">
               {slice.primary.tagline}
             </p>
           )}
@@ -50,7 +60,7 @@ const Hero = ({ slice }: HeroProps) => {
           {isFilled.link(slice.primary.button_link) && (
             <div className="pt-4 md:pt-6">
               <PrismicLink field={slice.primary.button_link}>
-                <OutlineButton className="text-white border-white hover:bg-white hover:text-black transition-all duration-300 text-base md:text-lg px-6 py-3 md:px-8 md:py-4">
+                <OutlineButton className="text-white border-white hover:bg-white hover:text-black transition-all duration-300 text-base px-6 py-3">
                   {slice.primary.button_link.text || "Learn More"}
                 </OutlineButton>
               </PrismicLink>
