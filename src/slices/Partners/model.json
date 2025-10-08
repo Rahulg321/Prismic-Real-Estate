@@ -18,6 +18,33 @@
             "label": "Heading",
             "placeholder": ""
           }
+        },
+        "partner_logo_images": {
+          "type": "Group",
+          "config": {
+            "label": "Partner Logo Images",
+            "repeat": true,
+            "fields": {
+              "logo_image": {
+                "type": "Image",
+                "config": {
+                  "label": "logo image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "logo_url": {
+                "type": "Link",
+                "config": {
+                  "label": "Logo URL",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
         }
       },
       "items": {}

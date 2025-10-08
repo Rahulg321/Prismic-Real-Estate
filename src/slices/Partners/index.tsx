@@ -1,4 +1,5 @@
 import { Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,22 +49,18 @@ const Partners = ({ slice }: PartnersProps) => {
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto">
-          {partners.map((partner) => (
+          {slice.primary.partner_logo_images.map((partner, index) => (
             <Link
-              key={partner.name}
-              href={partner.href}
+              key={index}
+              href={partner.logo_url.text || ""}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full max-w-[160px] hover:opacity-75 transition-opacity"
             >
-              <Image
-                src={partner.logo}
-                height={200}
-                width={200}
-                alt={`${partner.name} logo`}
+              <PrismicNextImage
+                field={partner.logo_image}
                 className="object-contain"
               />
-              <span className="sr-only">{partner.name}</span>
             </Link>
           ))}
         </div>

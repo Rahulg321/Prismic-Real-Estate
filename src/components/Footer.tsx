@@ -21,13 +21,28 @@ export default function Footer() {
               Follow us for the latest news about real estate
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="hover:text-white">
+              <Link
+                href="https://www.youtube.com/@therealocalbricks"
+                className="hover:text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Youtube size={24} />
               </Link>
-              <Link href="#" className="hover:text-white">
+              <Link
+                href="https://www.instagram.com/therealocalbricks/"
+                className="hover:text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Instagram size={24} />
               </Link>
-              <Link href="#" className="hover:text-white">
+              <Link
+                href="https://www.linkedin.com/company/therealocalbricks/"
+                className="hover:text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Linkedin size={24} />
               </Link>
             </div>

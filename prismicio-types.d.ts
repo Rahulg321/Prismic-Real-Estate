@@ -1677,6 +1677,31 @@ export type OurTeamSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Partners → Default → Primary → Partner Logo Images*
+ */
+export interface PartnersSliceDefaultPrimaryPartnerLogoImagesItem {
+  /**
+   * logo image field in *Partners → Default → Primary → Partner Logo Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners.default.primary.partner_logo_images[].logo_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_image: prismic.ImageField<never>;
+
+  /**
+   * Logo URL field in *Partners → Default → Primary → Partner Logo Images*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners.default.primary.partner_logo_images[].logo_url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  logo_url: prismic.LinkField;
+}
+
+/**
  * Primary content in *Partners → Default → Primary*
  */
 export interface PartnersSliceDefaultPrimary {
@@ -1689,6 +1714,18 @@ export interface PartnersSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   heading: prismic.KeyTextField;
+
+  /**
+   * Partner Logo Images field in *Partners → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners.default.primary.partner_logo_images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  partner_logo_images: prismic.GroupField<
+    Simplify<PartnersSliceDefaultPrimaryPartnerLogoImagesItem>
+  >;
 }
 
 /**
@@ -2139,6 +2176,7 @@ declare module "@prismicio/client" {
       OurTeamSliceVariation,
       OurTeamSliceDefault,
       PartnersSlice,
+      PartnersSliceDefaultPrimaryPartnerLogoImagesItem,
       PartnersSliceDefaultPrimary,
       PartnersSliceVariation,
       PartnersSliceDefault,

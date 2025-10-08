@@ -5,17 +5,9 @@ import { PrismicLink } from "@prismicio/react";
 import { SliceComponentProps } from "@prismicio/react";
 import Link from "next/link";
 
-/**
- * Props for `Hero`.
- */
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
-/**
- * Component for "Hero" Slices.
- */
 const Hero = ({ slice }: HeroProps) => {
-  console.log("button links", slice.primary.button_link);
-
   return (
     <section
       data-slice-type={slice.slice_type}
