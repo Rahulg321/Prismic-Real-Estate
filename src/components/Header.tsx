@@ -230,10 +230,7 @@ function DesktopMenuItem({ item }: { item: MenuItem }) {
 
   if (!item.children) {
     return (
-      <Link
-        href={item.href || "#"}
-        className="relative px-1 py-2 text-lg font-medium"
-      >
+      <Link href={item.href || "#"} className="relative px-1 py-2 font-medium">
         {item.label}
       </Link>
     );
@@ -243,7 +240,7 @@ function DesktopMenuItem({ item }: { item: MenuItem }) {
     <div ref={menuRef} className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 px-1 py-2 text-lg font-medium"
+        className="flex items-center gap-1 px-1 py-2 font-medium"
       >
         {item.label}
         <ChevronDown
@@ -320,7 +317,7 @@ function MobileMenuItem({
     return (
       <Link
         href={item.href || "#"}
-        className="border-b border-gray-800 py-4 text-lg font-medium text-white"
+        className="border-b border-gray-800 py-4 font-medium text-white"
         onClick={closeMenu}
       >
         {item.label}

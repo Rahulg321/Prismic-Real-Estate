@@ -1,7 +1,9 @@
 import { OutlineButton } from "@/components/Buttons/outline-button";
 import { Content, isFilled } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import { PrismicLink } from "@prismicio/react";
 import { SliceComponentProps } from "@prismicio/react";
+import Link from "next/link";
 
 /**
  * Props for `Hero`.
@@ -12,22 +14,15 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps) => {
+  console.log("button links", slice.primary.button_link);
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="relative w-full min-h-[80vh] overflow-hidden bg-slate-900"
     >
-      {/* <video
-        src={"/local-bricks-bgVideo.mp4"}
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-      /> */}
-
-      {isFilled.link(slice.primary.background_video) && (
+      {isFilled.link(slice.primary.background_video) ? (
         <video
           src={slice.primary.background_video.url as string}
           className="absolute inset-0 w-full h-full object-cover"
@@ -36,12 +31,19 @@ const Hero = ({ slice }: HeroProps) => {
           muted
           playsInline
         />
+      ) : (
+        <video
+          src={"/local-bricks-bgVideo.mp4"}
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
       )}
 
-      {/* Dark Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40 z-[1]" />
 
-      {/* Content */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 sm:px-6 md:px-12">
         <div className="max-w-5xl mx-auto text-center space-y-6 md:space-y-8">
           {/* Heading */}
@@ -56,16 +58,21 @@ const Hero = ({ slice }: HeroProps) => {
             </p>
           )}
 
-          {/* CTA Button */}
-          {isFilled.link(slice.primary.button_link) && (
-            <div className="pt-4 md:pt-6">
-              <PrismicLink field={slice.primary.button_link}>
+          <div className="pt-4 md:pt-6">
+            {isFilled.link(slice.primary.button_link) ? (
+              <PrismicNextLink href="/buy/residential/off-plan">
                 <OutlineButton className="text-white border-white hover:bg-white hover:text-black transition-all duration-300 text-base px-6 py-3">
                   {slice.primary.button_link.text || "Learn More"}
                 </OutlineButton>
-              </PrismicLink>
-            </div>
-          )}
+              </PrismicNextLink>
+            ) : (
+              <Link href="/buy/residential/off-plan">
+                <OutlineButton className="text-white border-white hover:bg-white hover:text-black transition-all duration-300 text-base px-6 py-3">
+                  Learn More
+                </OutlineButton>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </section>
