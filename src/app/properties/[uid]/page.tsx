@@ -82,7 +82,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
             </p>
           )}
           {isFilled.keyText(property.data.tagline) && (
-            <p className="text-lg text-yellow-400 font-medium">
+            <p className="text-lg text-accent-foreground font-medium">
               {property.data.tagline}
             </p>
           )}
@@ -91,7 +91,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         {/* Property Type and Listing Type Badges */}
         <div className="flex gap-3 mb-8">
           {isFilled.select(property.data.property_type) && (
-            <span className="inline-block bg-yellow-400 text-black px-4 py-2 rounded-md font-semibold text-sm">
+            <span className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold text-sm">
               {property.data.property_type}
             </span>
           )}
@@ -107,7 +107,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           {/* Location */}
           {isFilled.keyText(property.data.location) && (
             <div className="bg-muted rounded-lg p-6 flex items-start gap-4">
-              <MapPin className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+              <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold text-lg mb-1">Location</h3>
                 <p className="text-muted-foreground">
@@ -120,7 +120,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           {/* Price per Square Foot */}
           {isFilled.keyText(property.data.price_square_ft) && (
             <div className="bg-muted rounded-lg p-6 flex items-start gap-4">
-              <DollarSign className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+              <DollarSign className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold text-lg mb-1">Price/sq.ft</h3>
                 <p className="text-muted-foreground">
@@ -133,7 +133,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           {/* Super Built Area */}
           {isFilled.keyText(property.data.super_built_area) && (
             <div className="bg-muted rounded-lg p-6 flex items-start gap-4">
-              <Home className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+              <Home className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold text-lg mb-1">Built Area</h3>
                 <p className="text-muted-foreground">
@@ -146,7 +146,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           {/* Floor */}
           {isFilled.keyText(property.data.floor) && (
             <div className="bg-muted rounded-lg p-6 flex items-start gap-4">
-              <Layers className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+              <Layers className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold text-lg mb-1">Floor</h3>
                 <p className="text-muted-foreground">{property.data.floor}</p>
@@ -157,7 +157,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           {/* Ownership */}
           {isFilled.keyText(property.data.ownership) && (
             <div className="bg-muted rounded-lg p-6 flex items-start gap-4">
-              <Key className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+              <Key className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold text-lg mb-1">Ownership</h3>
                 <p className="text-muted-foreground">
@@ -170,7 +170,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           {/* Construction Status */}
           {isFilled.keyText(property.data.construction_status) && (
             <div className="bg-muted rounded-lg p-6 flex items-start gap-4">
-              <Construction className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+              <Construction className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold text-lg mb-1">Status</h3>
                 <p className="text-muted-foreground">
@@ -201,14 +201,14 @@ export default async function Page({ params }: { params: Promise<Params> }) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-block text-xs bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+                className="inline-block text-xs bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-8 rounded-lg transition-colors duration-300"
               >
                 Contact Us
               </Link>
               {isFilled.contentRelationship(property.data.route_name) && (
                 <PrismicNextLink
                   field={property.data.route_name}
-                  className="inline-block text-xs bg-transparent border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black text-yellow-400 font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+                  className="inline-block text-xs bg-transparent border-2 border-primary hover:bg-primary hover:text-primary-foreground text-primary font-bold py-3 px-8 rounded-lg transition-colors duration-300"
                 >
                   View Similar Properties
                 </PrismicNextLink>
