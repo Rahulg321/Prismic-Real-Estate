@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Building2, MapPin } from "lucide-react";
 import { PropertyDocument } from "../../prismicio-types";
 import { title } from "process";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export default function RealEstateListing({
   property,
@@ -90,12 +92,12 @@ export default function RealEstateListing({
           </div>
 
           <div className="mt-6 flex justify-end space-x-3">
-            <button className="px-4 py-2 border border-amber-700 text-amber-700 rounded hover:bg-amber-50 transition-colors">
-              Contact Agent
-            </button>
-            <button className="px-4 py-2 bg-amber-700 text-white rounded hover:bg-amber-800 transition-colors">
-              View Details
-            </button>
+            <Button
+              className="bg-amber-700 text-white rounded hover:bg-amber-800 transition-colors"
+              asChild
+            >
+              <Link href={`/properties/${property.uid}`}>View Details</Link>
+            </Button>
           </div>
         </div>
       </div>

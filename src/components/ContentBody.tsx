@@ -1,5 +1,6 @@
 import { SliceZone } from "@prismicio/react";
 import { Content } from "@prismicio/client";
+import Link from "next/link";
 
 import { components } from "@/slices";
 import Bounded from "@/components/Bounded";
@@ -45,6 +46,25 @@ export default function ContentBody({
         {/* Content */}
         <div className="prose-xs prose prose-invert mt-12 w-full max-w-none md:prose-lg prose-h1:text-4xl md:mt-20">
           <SliceZone slices={page.data.slices} components={components} />
+        </div>
+
+        {/* Call to Action */}
+        <div className="mt-16 md:mt-24 mb-8 text-center">
+          <div className="rounded-lg p-8 md:p-12 bg-muted">
+            <h3 className="text-2xl font-bold mb-4">
+              Interested in Learning More?
+            </h3>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Get in touch with our team for personalized assistance and expert
+              advice on your real estate needs.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block text-xs bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       </div>
     </section>

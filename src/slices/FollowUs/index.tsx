@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Facebook, Linkedin, Instagram } from "lucide-react";
+import { Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -40,7 +40,7 @@ const FollowUs = ({ slice }: FollowUsProps) => {
               className="text-[#C5A880] hover:text-[#b39671] transition-colors"
               aria-label="Follow us on Facebook"
             >
-              <Facebook size={32} />
+              <Youtube size={32} />
             </Link>
             <Link
               href="#"
