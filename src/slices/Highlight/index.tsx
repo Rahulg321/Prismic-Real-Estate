@@ -62,6 +62,59 @@ const Highlight = ({ slice }: HighlightProps) => {
             </div>
           </div>
         </div>
+      ) : slice.variation === "inverted" ? (
+        <div className="container mx-auto px-4 py-16 md:py-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            {/* Content on the left */}
+            <div className="space-y-6 md:order-1">
+              <div>
+                <h2 className="text-[#C5A880] text-lg mb-2">
+                  {slice.primary.tagline}
+                </h2>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+                  {slice.primary.heading}
+                </h1>
+              </div>
+
+              <div className="flex gap-4">
+                <Link
+                  href="#"
+                  className="text-[#C5A880] hover:text-[#b39671] transition-colors"
+                  aria-label="Follow us on Facebook"
+                >
+                  <Facebook size={24} />
+                </Link>
+                <Link
+                  href="#"
+                  className="text-[#C5A880] hover:text-[#b39671] transition-colors"
+                  aria-label="Connect with us on LinkedIn"
+                >
+                  <Linkedin size={24} />
+                </Link>
+                <Link
+                  href="#"
+                  className="text-[#C5A880] hover:text-[#b39671] transition-colors"
+                  aria-label="Follow us on Instagram"
+                >
+                  <Instagram size={24} />
+                </Link>
+              </div>
+
+              <PrismicRichText field={slice.primary.content} />
+            </div>
+
+            {/* Image on the right */}
+            <div className="relative aspect-square md:order-2">
+              <Image
+                src={slice.primary.featured_image.url as string}
+                alt="Luxury living room"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </div>
       ) : (
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">

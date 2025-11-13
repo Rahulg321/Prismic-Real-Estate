@@ -1438,11 +1438,70 @@ export type HighlightSliceBackgroundWithHeading = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Highlight → Inverted → Primary*
+ */
+export interface HighlightSliceInvertedPrimary {
+  /**
+   * Featured Image field in *Highlight → Inverted → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: highlight.inverted.primary.featured_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *Highlight → Inverted → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: highlight.inverted.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Tagline field in *Highlight → Inverted → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: highlight.inverted.primary.tagline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * Content field in *Highlight → Inverted → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: highlight.inverted.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Inverted variation for Highlight Slice
+ *
+ * - **API ID**: `inverted`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightSliceInverted = prismic.SharedSliceVariation<
+  "inverted",
+  Simplify<HighlightSliceInvertedPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Highlight*
  */
 type HighlightSliceVariation =
   | HighlightSliceDefault
-  | HighlightSliceBackgroundWithHeading;
+  | HighlightSliceBackgroundWithHeading
+  | HighlightSliceInverted;
 
 /**
  * Highlight Shared Slice
@@ -2159,9 +2218,11 @@ declare module "@prismicio/client" {
       HighlightSlice,
       HighlightSliceDefaultPrimary,
       HighlightSliceBackgroundWithHeadingPrimary,
+      HighlightSliceInvertedPrimary,
       HighlightSliceVariation,
       HighlightSliceDefault,
       HighlightSliceBackgroundWithHeading,
+      HighlightSliceInverted,
       ListingIndexSlice,
       ListingIndexSliceDefaultPrimary,
       ListingIndexSliceVariation,
