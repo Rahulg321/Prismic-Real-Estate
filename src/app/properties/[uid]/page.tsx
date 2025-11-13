@@ -181,14 +181,12 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           )}
         </div>
 
-        {/* Additional Content from Slices */}
         {property.data.slices.length > 0 && (
           <div className="prose prose-invert max-w-none md:prose-lg mb-12">
             <SliceZone slices={property.data.slices} components={components} />
           </div>
         )}
 
-        {/* Call to Action */}
         <div className="mt-16 md:mt-24 mb-8">
           <div className="rounded-lg p-8 md:p-12 bg-muted text-center">
             <h3 className="text-2xl font-bold mb-4">
