@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import WhitePrismicLogo from "../../public/logos/white-logo.png";
 
 export default function Footer() {
   return (
@@ -19,10 +20,10 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <Image
-                src={"/logos/bricks-logo.png"}
-                alt="Bricks Logo"
-                width={200}
-                height={200}
+                src={WhitePrismicLogo}
+                alt="Local Bricks Logo"
+                width={100}
+                height={100}
               />
             </div>
             <p className="text-base leading-relaxed">
