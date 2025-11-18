@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* Right Column - Newsletter */}
           <div className="space-y-6">
-            <h2 className="text-4xl font-serif">Don't Miss Our News</h2>
+            <h2 className="text-4xl font-serif">Don&apos;t Miss Our News</h2>
             <p className="text-lg">Subscribe now and thank us later</p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Input

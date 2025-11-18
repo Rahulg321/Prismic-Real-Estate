@@ -10,9 +10,6 @@ import Link from "next/link";
 
 export type HighlightProps = SliceComponentProps<Content.HighlightSlice>;
 
-/**
- * Component for "Highlight" Slices.
- */
 const Highlight = ({ slice }: HighlightProps) => {
   return (
     <section
@@ -65,7 +62,6 @@ const Highlight = ({ slice }: HighlightProps) => {
       ) : slice.variation === "inverted" ? (
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Content on the left */}
             <div className="space-y-6 md:order-1">
               <div>
                 <h2 className="text-[#C5A880] text-lg mb-2">
