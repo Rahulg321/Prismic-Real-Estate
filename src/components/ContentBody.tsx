@@ -6,16 +6,22 @@ import { components } from "@/slices";
 import Bounded from "@/components/Bounded";
 import { formatDate } from "@/lib/utils";
 import { PrismicNextImage } from "@prismicio/next";
+import { BackButton } from "@/components/back-button";
 
 export default function ContentBody({
   page,
+  showBackButton = false,
 }: {
   page: Content.BlogPostDocument | Content.NewsDocument;
+  showBackButton?: boolean;
 }) {
   const formattedDate = formatDate(page.data.date_published);
   return (
-    <section className="block-space">
+    <section className="block-space-mini">
       <div className="big-container">
+        {/* Back Button */}
+        {showBackButton && <BackButton />}
+
         {/* Featured Image */}
         <div className="w-full mb-8 md:mb-12">
           <PrismicNextImage

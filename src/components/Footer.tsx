@@ -1,11 +1,11 @@
 import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+  FaYoutube,
+  FaLinkedin,
+  FaInstagram,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaPhone,
+} from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
@@ -30,14 +30,29 @@ export default function Footer() {
               Premium Service. Follow us for the latest news about real estate.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="transition-colors hover:text-amber-500">
-                <Facebook size={32} fill="white" />
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-amber-500"
+              >
+                <FaYoutube size={32} />
               </a>
-              <a href="#" className="transition-colors hover:text-amber-500">
-                <Linkedin size={32} fill="white" />
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-amber-500"
+              >
+                <FaLinkedin size={32} />
               </a>
-              <a href="#" className="transition-colors hover:text-amber-500">
-                <Instagram size={32} strokeWidth={2.5} />
+              <a
+                href="https://www.instagram.com/therealocalbricks/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-amber-500"
+              >
+                <FaInstagram size={32} />
               </a>
             </div>
           </div>
@@ -47,17 +62,17 @@ export default function Footer() {
             <h2 className="text-4xl font-serif">Contact</h2>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <Phone size={24} className="mt-1 flex-shrink-0" />
+                <FaPhone size={24} className="mt-1 flex-shrink-0" />
                 <span className="text-lg">+91-9560014664</span>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin size={24} className="mt-1 flex-shrink-0" />
+                <FaMapMarkerAlt size={24} className="mt-1 flex-shrink-0" />
                 <span className="text-lg">
                   Vatika Business Park, Section 49, Gurugram, Haryana - 12201
                 </span>
               </div>
               <div className="flex items-start gap-3">
-                <Mail size={24} className="mt-1 flex-shrink-0" />
+                <FaEnvelope size={24} className="mt-1 flex-shrink-0" />
                 <span className="text-lg">rakeshbajaj1958@gmail.com</span>
               </div>
             </div>

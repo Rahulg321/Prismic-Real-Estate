@@ -37,7 +37,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </Head>
-      <ContentBody page={page} />
+      <ContentBody page={page} showBackButton={true} />
     </>
   );
 }

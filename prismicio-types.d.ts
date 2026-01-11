@@ -876,6 +876,159 @@ export type RentResidentialDocument<Lang extends string = string> =
     Lang
   >;
 
+type TeammemberDocumentDataSlicesSlice = never;
+
+/**
+ * Content for TeamMember documents
+ */
+interface TeammemberDocumentData {
+  /**
+   * First Name field in *TeamMember*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.first_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  first_name: prismic.KeyTextField;
+
+  /**
+   * Last Name field in *TeamMember*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.last_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  last_name: prismic.KeyTextField;
+
+  /**
+   * Headshot field in *TeamMember*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.headshot
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  headshot: prismic.ImageField<never>;
+
+  /**
+   * Designation field in *TeamMember*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.designation
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  designation: prismic.KeyTextField;
+
+  /**
+   * Email field in *TeamMember*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * Location field in *TeamMember*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Phone Number field in *TeamMember*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.phone_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number: prismic.KeyTextField;
+
+  /**
+   * Description field in *TeamMember*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *TeamMember*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<TeammemberDocumentDataSlicesSlice> /**
+   * Meta Title field in *TeamMember*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: teammember.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *TeamMember*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: teammember.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *TeamMember*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teammember.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * TeamMember document from Prismic
+ *
+ * - **API ID**: `teammember`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TeammemberDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<TeammemberDocumentData>,
+    "teammember",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | BlogPostDocument
   | BuycommercialDocument
@@ -885,7 +1038,8 @@ export type AllDocumentTypes =
   | PageDocument
   | PropertyDocument
   | RentCommercialDocument
-  | RentResidentialDocument;
+  | RentResidentialDocument
+  | TeammemberDocument;
 
 /**
  * Primary content in *BlogIndex → Default → Primary*
@@ -1626,51 +1780,6 @@ export type NewsIndexSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *OurTeam → Default → Primary → members*
- */
-export interface OurTeamSliceDefaultPrimaryMembersItem {
-  /**
-   * First Name field in *OurTeam → Default → Primary → members*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: our_team.default.primary.members[].first_name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  first_name: prismic.KeyTextField;
-
-  /**
-   * Last Name field in *OurTeam → Default → Primary → members*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: our_team.default.primary.members[].last_name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  last_name: prismic.KeyTextField;
-
-  /**
-   * Designation field in *OurTeam → Default → Primary → members*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: our_team.default.primary.members[].designation
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  designation: prismic.KeyTextField;
-
-  /**
-   * Member Image field in *OurTeam → Default → Primary → members*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: our_team.default.primary.members[].member_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  member_image: prismic.ImageField<never>;
-}
-
-/**
  * Primary content in *OurTeam → Default → Primary*
  */
 export interface OurTeamSliceDefaultPrimary {
@@ -1693,16 +1802,6 @@ export interface OurTeamSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   tagline: prismic.KeyTextField;
-
-  /**
-   * members field in *OurTeam → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: our_team.default.primary.members[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  members: prismic.GroupField<Simplify<OurTeamSliceDefaultPrimaryMembersItem>>;
 }
 
 /**
@@ -2189,6 +2288,9 @@ declare module "@prismicio/client" {
       RentResidentialDocument,
       RentResidentialDocumentData,
       RentResidentialDocumentDataSlicesSlice,
+      TeammemberDocument,
+      TeammemberDocumentData,
+      TeammemberDocumentDataSlicesSlice,
       AllDocumentTypes,
       BlogIndexSlice,
       BlogIndexSliceDefaultPrimary,
@@ -2232,7 +2334,6 @@ declare module "@prismicio/client" {
       NewsIndexSliceVariation,
       NewsIndexSliceDefault,
       OurTeamSlice,
-      OurTeamSliceDefaultPrimaryMembersItem,
       OurTeamSliceDefaultPrimary,
       OurTeamSliceVariation,
       OurTeamSliceDefault,

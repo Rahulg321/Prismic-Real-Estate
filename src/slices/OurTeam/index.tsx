@@ -1,6 +1,7 @@
+import { createClient } from "@/prismicio";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import Image from "next/image";
+import { TeamCard } from "@/components/team-card";
 
 /**
  * Props for `OurTeam`.
@@ -10,7 +11,11 @@ export type OurTeamProps = SliceComponentProps<Content.OurTeamSlice>;
 /**
  * Component for "OurTeam" Slices.
  */
-const OurTeam = ({ slice }: OurTeamProps) => {
+const OurTeam = async ({ slice }: OurTeamProps) => {
+  const client = createClient();
+
+  const members = await client.getAllByType("teammember");
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -26,24 +31,8 @@ const OurTeam = ({ slice }: OurTeamProps) => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {slice.primary.members.map((member, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <div className="w-full aspect-square relative mb-4 max-w-xs mx-auto">
-              <Image
-                src={member.member_image.url || "/placeholder.svg"}
-                alt={
-                  member.member_image.alt || "image of local bricks team member"
-                }
-                fill
-                className="object-cover grayscale"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-            </div>
-            <h3 className="text-xl font-medium text-center">
-              {member.first_name} {member.last_name}
-            </h3>
-            <p className="text-amber-600 text-center">{member.designation}</p>
-          </div>
+        {members.map((member) => (
+          <TeamCard key={member.id} member={member} />
         ))}
       </div>
     </section>
