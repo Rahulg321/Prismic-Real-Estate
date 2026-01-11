@@ -18,5 +18,14 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: page.data.meta_title,
     description: page.data.meta_description,
+    openGraph: {
+      images: [
+        {
+          url: page.data.meta_image.url || "",
+          width: page.data.meta_image.dimensions?.width || 0,
+          height: page.data.meta_image.dimensions?.height || 0,
+        },
+      ],
+    },
   };
 }

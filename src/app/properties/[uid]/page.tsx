@@ -35,8 +35,14 @@ export async function generateMetadata({
     openGraph: {
       title: property.data.meta_title || undefined,
       description: property.data.meta_description || undefined,
-      images: property.data.meta_image.url
-        ? [property.data.meta_image.url]
+      images: isFilled.image(property.data.meta_image)
+        ? [
+            {
+              url: property.data.meta_image.url || "",
+              width: property.data.meta_image.dimensions?.width || 0,
+              height: property.data.meta_image.dimensions?.height || 0,
+            },
+          ]
         : [],
     },
   };
